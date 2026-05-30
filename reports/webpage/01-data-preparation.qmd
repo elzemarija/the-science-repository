@@ -13,7 +13,7 @@ source(file.path(rprojroot::find_root(rprojroot::is_git_root), "R", "01_setup.R"
 
 This page is the **first stage of the pipeline**. It loads the raw data, shows
 the realistic mess inside it, cleans it with the shared functions in
-[`R/functions/data_loading.R`](https://github.com/your-username/the-science-repository/blob/main/R/functions/data_loading.R),
+[`R/functions/data_loading.R`](https://github.com/TheDataFlowCompany/the-science-repository/blob/main/R/functions/data_loading.R),
 and **saves** the result to `data/processed/`. Every page after this one just
 reads that saved file — it never re-does the cleaning.
 
@@ -23,7 +23,7 @@ logic lives in `R/`; this page only `source()`s it and tells the story.
 ## Load the raw data
 
 `load_raw_consumer_data()` reads from `data/mock/` (or `data/raw/`, depending on
-`DATA_MODE` — see [`R/01_setup.R`](https://github.com/your-username/the-science-repository/blob/main/R/01_setup.R)).
+`DATA_MODE` — see [`R/01_setup.R`](https://github.com/TheDataFlowCompany/the-science-repository/blob/main/R/01_setup.R)).
 
 ```{r load}
 raw <- load_raw_consumer_data("consumer_data_raw.csv")
@@ -33,7 +33,7 @@ dplyr::glimpse(raw)
 The raw file is deliberately messy — mixed-case column names, trailing
 whitespace, `-99` missing codes, inconsistent gender labels, a reverse-scored
 item. The full inventory is in the
-[codebook](https://github.com/your-username/the-science-repository/blob/main/data/mock/codebook.md).
+[codebook](https://github.com/TheDataFlowCompany/the-science-repository/blob/main/data/mock/codebook.md).
 
 ## Clean it
 

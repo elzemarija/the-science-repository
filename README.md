@@ -53,7 +53,7 @@ the next render — nothing is copied between them.
 
 The template ships with a synthetic consumer decision-making study (300 fake
 participants, 5 message-framing conditions). Read it on the
-[website](https://your-username.github.io/the-science-repository/renders/webpage/):
+[website](https://TheDataFlowCompany.github.io/the-science-repository/renders/webpage/):
 data preparation → descriptives → mediation/moderation analysis. Replace the
 dataset and the report pages with your own when you fork.
 

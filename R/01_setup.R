@@ -19,7 +19,7 @@ required_packages <- c(
 )
 
 to_install <- setdiff(required_packages, rownames(installed.packages()))
-if (length(to_install) > 0) install.packages(to_install)
+if (length(to_install) > 0) install.packages(to_install, repos = "https://cloud.r-project.org")
 
 invisible(lapply(required_packages, library, character.only = TRUE))
 
