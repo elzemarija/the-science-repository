@@ -108,6 +108,32 @@ clean <- clean_consumer(raw)           # now call it like any other function
 
 ---
 
+## Building a plot in layers (Act 2½)
+
+A ggplot is **data + aesthetic mappings + geometries**, stacked with `+`:
+
+```r
+ggplot(clean, aes(x = perceived_value, y = purchase_intention)) +  # data + axes
+  geom_point(aes(color = condition),                  # one point per row,
+             position = position_jitter(0.08, 0.08)) +# nudged apart, by group
+  geom_smooth(method = "lm") +           # a linear trend line
+  labs(x = "Perceived value", y = "Purchase intention", color = "Frame") +
+  scale_color_viridis_d() +              # a colourblind-safe palette
+  theme_minimal()
+```
+
+- **`+`, not `|>`** — inside a ggplot, layers join with `+`, and the `+` goes at
+  the **end** of the line. (Mixing these up is the #1 ggplot error.)
+- **Points piling up on a grid?** Nudge them apart with
+  `position = position_jitter(width = .08, height = .08)` (or use `geom_jitter()`)
+  so you can see how dense the cloud really is.
+- An `aes()` in **`ggplot()`** applies to every layer; an `aes()` inside a
+  **`geom_*()`** applies to that layer only.
+- Swap the geom to ask a new question: `geom_boxplot()`, `geom_histogram()`,
+  `geom_density(alpha = 0.5)`, `geom_col()`.
+- Save the last plot you drew with
+  `ggsave("figure.png", width = 7, height = 5, dpi = 300)`.
+
 ## The report (Act 4)
 
 A `.qmd` file = **YAML header** (settings) + **prose** + **code chunks**:

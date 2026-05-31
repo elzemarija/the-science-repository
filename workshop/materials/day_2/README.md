@@ -19,13 +19,15 @@ and exactly the kind of code an AI assistant will write *for* them on Day 3.
 
 ## The four acts
 
-The demo is one continuous story told in four moves. Each file is runnable on
-its own and is heavily commented so it doubles as a take-home reference.
+The demo is one continuous story told in four moves, plus a visualisation
+interlude. Each file is runnable on its own and is heavily commented so it
+doubles as a take-home reference.
 
 | Act | File | The big idea | ~ time |
 | --- | --- | --- | --- |
 | **1 · Console** | [`01_console_basics.R`](01_console_basics.R) | R as a calculator → **values & types** → **assignment** (`<-`) → **vectors** → `NA` → **factors** → **functions** → **packages** | 30 min |
 | **2 · Script** | [`02_first_script.R`](02_first_script.R) | Why save code. The same ideas, now a **reproducible script** on the real CSV: read → inspect → clean → describe → plot → save. | 25 min |
+| **2½ · Visualise** | [`02b_visualisation.R`](02b_visualisation.R) | Build one figure **layer by layer** — data → `aes()` → `geom_*()` → labels — until it's publication-ready. The grammar of graphics, live. The fun part. | 12 min |
 | **3 · Functions** | [`03_functions.R`](03_functions.R) + [`04_script_with_functions.R`](04_script_with_functions.R) | Extract the repeated recipes into **named functions** (an "engine") and watch the analysis script shrink to a readable summary. | 20 min |
 | **4 · Report** | [`05_report.qmd`](05_report.qmd) | A **Quarto report** that *sources the engine*, runs it, and renders **prose + code + results** into one HTML file. The twin of a real `reports/webpage/` page. | 20 min |
 
@@ -68,6 +70,9 @@ source("workshop/materials/day_2/01_console_basics.R")
 
 # Act 2 — run the whole script ("Source", or Cmd/Ctrl + Shift + Enter)
 source("workshop/materials/day_2/02_first_script.R")
+
+# Act 2½ — run ONE block at a time and watch the Plots pane build up the figure
+#          (don't source it whole — the point is to see each layer appear)
 
 # Act 3 — the engine (03) is sourced automatically by 04:
 source("workshop/materials/day_2/04_script_with_functions.R")

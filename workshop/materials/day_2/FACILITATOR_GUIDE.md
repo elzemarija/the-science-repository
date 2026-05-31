@@ -166,9 +166,75 @@ the *"restart R and run it top to bottom"* test of reproducibility.
   and PNG. *"Results that live only in the Console vanish. Saved files are what
   the report and tomorrow's write-up will use."*
 
-**Transition:** *"Look back at the shape: read, inspect, clean, describe, plot,
-save — that's almost every analysis ever. But the cleaning and plotting are
-recipes we'll want again. Copy-paste spreads bugs. So we name each recipe once."*
+**Transition:** *"We made one quick boxplot at the very end there. Before we tidy
+the code up, let's slow right down on that plotting step — because ggplot is
+where a lot of people fall in love with R. Watch a plain scatter turn into a
+publication figure, one line at a time."*
+
+---
+
+## Act 2½ — Seeing the data  ·  ~12 min  ·  `02b_visualisation.R`
+
+**Goal:** the grammar of graphics, felt rather than explained — **data → `aes()`
+→ `geom_*()` → polish**. Run this file **one block at a time**; the whole point
+is to watch the Plots pane change with each layer. This is the energy high point
+of the morning — keep it quick and visual.
+
+> **Say once, up front, and repeat it:** *"Inside a ggplot, layers join with a
+> PLUS sign `+`, not the pipe `|>`. And the `+` goes at the END of a line."*
+> This is the single most common ggplot beginner error — inoculate them now.
+
+### Beat 1 — From nothing to points (4 min)
+- Run block **1** (`ggplot(data = clean)`) → a blank grey panel. *"We said WHAT
+  data, but not what to draw."*
+- Run block **2** (add `aes(x = perceived_value, y = purchase_intention)`) →
+  axes appear, still no data. *"Now the axes know our variables — but we haven't
+  picked a shape to draw."*
+- Run block **3** (`+ geom_point()`) → the scatter. *"geom_point draws one point
+  per shopper. Three lines, and we can see the relationship."* Then point at the
+  grid: *"But see how points stack on a grid? Lots of shoppers share the same
+  averaged scores — that's overplotting, and it hides how many points are really
+  there. Watch the next step."*
+
+### Beat 2 — More dimensions, and the big 'aha' (4 min)
+- Run block **4** (`position = jitter_a_little` + `color = condition`) → the
+  points spread apart **and** colour by group, with an automatic legend. *"Two
+  small things: we nudge each point a touch so the pile-ups open up, and we
+  colour by condition. We keep that jitter for every scatter from here on."*
+- Run block **5** (`+ geom_smooth(method = "lm")`) → **five** trend lines.
+  **Pause here.** *"Why five? Because colour is set globally, so EVERY layer —
+  including the line — is split by condition."*
+- Run block **6** (move `color` into `geom_point()`) → **one** trend line. *"Move
+  the colour into just the points layer, and the line goes back to one. That's
+  the rule: an aesthetic in a geom affects only that geom; in `ggplot()` it
+  affects all of them."* This contrast is the conceptual core of the act.
+
+### Beat 3 — Make it publication-ready (3 min)
+- Run block **7** (`shape = condition` too) → *"colour AND shape carry the same
+  grouping, so the figure still works in black-and-white or for a colourblind
+  reader."*
+- Run block **8** (`labs()` + `scale_color_viridis_d()` + `theme_minimal()`) →
+  the finished figure. *"Same plot, now with real labels and a colourblind-safe
+  palette. You could put this straight in a paper. Notice the legend title comes
+  from `labs(color = ..., shape = ...)`."*
+
+### Beat 4 — Swap the geom, ask a new question (1 min)
+- Run block **9** (`geom_density(alpha = 0.5)`) → overlapping distributions.
+  *"Same grammar, different geometry. Change the geom and you've asked a
+  completely different question of the same data."*
+
+**Expected, harmless message:** every `geom_smooth()` prints
+`` `geom_smooth()` using formula = 'y ~ x' ``. That's information, not an error —
+say so, don't let it spook anyone.
+
+**Cut/extend:** *Behind?* Show blocks 3, 5→6 (the aha), and 8 only. *Ahead?* Add
+`alpha`/`geom_jitter()` to tackle overplotting, or `facet_wrap(~ condition)` to
+split into small multiples — a one-line crowd-pleaser.
+
+**Transition:** *"Look back at the whole morning's shape now: read, inspect,
+clean, describe, visualise, save — almost every analysis ever. But the cleaning
+and the plotting are recipes we'll want again and again. Copy-paste spreads bugs.
+So we name each recipe once."*
 
 ---
 
@@ -260,8 +326,8 @@ it reuses the same engine; it is the twin of a real `reports/webpage/` page.
 
 | If you're… | Do this |
 | --- | --- |
-| **On time** | Run as written. Take the break between Act 2 and Act 3. |
-| **Behind** | In Act 1, cut the `data.frame()` section (Beat after packages) and the `seq()`/`%%` extras. In Act 4, **show the pre-rendered HTML** instead of live-rendering. Never cut the `could not find function` and `object not found` error demos — they pay off all week. |
+| **On time** | Run as written. Take the break between Act 2½ and Act 3 — right after the visualisation high. |
+| **Behind** | In Act 1, cut the `data.frame()` section (Beat after packages) and the `seq()`/`%%` extras. In Act 2½, show only blocks 3, 5→6, and 8. In Act 4, **show the pre-rendered HTML** instead of live-rendering. Never cut the `could not find function` and `object not found` error demos, or the Act 2½ "five lines vs one line" aha — they pay off all week. |
 | **Ahead / advanced room** | Act 1: show `summary(demo)` and `str()`. Act 2: add a second `geom` or `facet_wrap(~ gender)`. Act 3: have them spot that `clean_consumer()` only does *part* of the real cleaning (compare to `R/functions/data_loading.R`) — a great "read and diagnose" exercise. Act 4: toggle `code-fold: true` and re-render. |
 
 **Two checkpoints to pause and read the room:**
@@ -279,6 +345,7 @@ it reuses the same engine; it is the twin of a real `reports/webpage/` page.
 | `object 'clean' not found` in Act 2/4 | ran a later line before an earlier one | Source the whole file, or run from the top |
 | `cannot open file ... consumer_data_raw.csv` | project not open / wrong working dir | confirm the title bar shows the project; reopen the `.Rproj` |
 | `could not find function "clean_consumer"` in Act 4 | `03_functions.R` not sourced | the `source(...)` line near the top must run first |
+| ggplot: `Cannot add ggproto objects together`, or a layer "errors" on its own | used `|>` between layers instead of `+`, or put `+` at the **start** of a line | join layers with `+`, and keep `+` at the **end** of each line |
 | Quarto render fails | stale cache or wrong dir | run from repo root; delete `workshop/materials/day_2/.quarto/`; fall back to the pre-rendered HTML |
 | `there is no package called 'renv'` on a fresh laptop | environment not restored | `install.packages("renv"); renv::restore()` |
 
