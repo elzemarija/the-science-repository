@@ -540,6 +540,25 @@ won't be pushed, even if you forget.
 
 ---
 
+## ☕ Coffee break — 10:30–11:00  *(end of Session I)*
+
+**On slide:**
+
+```text
+Back at 11:00.
+
+✓ So far: GitHub account · your fork · website live on Pages · first commit
+→ Next: install R & RStudio, then clone your fork to your own laptop
+```
+
+**Speaker note:**
+Everything so far has been in the browser — nothing installed on the laptop yet.
+Use the break to help anyone whose account verification or Pages build is still
+catching up, so the whole room starts the install session together. Coffee runs
+to 11:00.
+
+---
+
 # Part C — R + RStudio
 
 ## Slide 20 — R vs RStudio
@@ -727,6 +746,26 @@ That's all you need today. The one addition worth flagging: the **Console** runs
 *R* code, while the **Terminal** runs *system* commands (git, quarto). People mix
 these up constantly — when we render later, that goes in the Terminal, not the
 Console.
+
+---
+
+## 🍽 Lunch — 12:30–13:30  *(end of Session II)*
+
+**On slide:**
+
+```text
+Back at 13:30.
+
+✓ So far: R & RStudio installed · fork cloned · project open via the .Rproj
+→ Next: restore the exact packages, then the publishing pipeline and your
+        first local render
+```
+
+**Speaker note:**
+The hardest part of the day — installs and Git authentication — is now behind us.
+Use the long break to get any remaining laptops cloned and opened via the
+`.Rproj`, so everyone is on the same footing for the afternoon. Lunch runs to
+13:30.
 
 ---
 
@@ -1057,6 +1096,26 @@ your own laptop and preview before pushing. If it builds, your R + renv + Quarto
 chain is fully working — that's the **Day 1 finish line**. The manuscript (LaTeX)
 is the next, optional slide; if we're short on time it moves to Day 3 and nothing
 today depends on it.
+
+---
+
+## ☕ Coffee break — 15:00–15:30  *(end of Session III)*
+
+**On slide:**
+
+```text
+Back at 15:30.
+
+✓ So far: environment restored · website rendered locally — the Day 1 finish line
+→ Next: the optional second output (the PDF manuscript), common blockers, and
+        the end-of-day checklist
+```
+
+**Speaker note:**
+If `quarto render reports/webpage` worked, the core Day 1 chain — R + renv +
+Quarto — is fully working for that person. Use the break to get anyone whose
+render failed across the line, so the final session is wrap-up and catch-up
+rather than firefighting. Coffee runs to 15:30.
 
 ---
 
