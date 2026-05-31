@@ -9,6 +9,17 @@
     ]
   },
   "Packages": {
+    "GPArotation": {
+      "Package": "GPArotation",
+      "Version": "2026.4-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "stats"
+      ],
+      "Hash": "ee34c777ddd43b131b46606864981e8a"
+    },
     "R6": {
       "Package": "R6",
       "Version": "2.5.1",
@@ -456,6 +467,33 @@
       ],
       "Hash": "b64ec208ac5bc1852b285f665d6368b3"
     },
+    "later": {
+      "Package": "later",
+      "Version": "1.4.8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "rlang"
+      ],
+      "Hash": "824c180e69b9be79ab96a985e233c470"
+    },
+    "lattice": {
+      "Package": "lattice",
+      "Version": "0.22-6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "grDevices",
+        "graphics",
+        "grid",
+        "stats",
+        "utils"
+      ],
+      "Hash": "cc5ac1ba4c238c7ca9fa6a87ca11a7e2"
+    },
     "lifecycle": {
       "Package": "lifecycle",
       "Version": "1.0.5",
@@ -512,6 +550,40 @@
       ],
       "Hash": "18e9c28c1d3ca1560ce30658b22ce104"
     },
+    "mnormt": {
+      "Package": "mnormt",
+      "Version": "2.1.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "0e36d7c14f8144ba8e1d117a7d10615a"
+    },
+    "nlme": {
+      "Package": "nlme",
+      "Version": "3.1-166",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "graphics",
+        "lattice",
+        "stats",
+        "utils"
+      ],
+      "Hash": "ccbb8846be320b627e6aa2b4616a2ded"
+    },
+    "otel": {
+      "Package": "otel",
+      "Version": "0.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "627d6993db1043703c0b084fa432f21f"
+    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.9.0",
@@ -562,6 +634,41 @@
         "prettyunits"
       ],
       "Hash": "f4625e061cb2865f111b47ff163a5ca6"
+    },
+    "promises": {
+      "Package": "promises",
+      "Version": "1.5.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "fastmap",
+        "later",
+        "lifecycle",
+        "magrittr",
+        "otel",
+        "rlang"
+      ],
+      "Hash": "62cb899ed5fff70d4e918ec1b762bf7c"
+    },
+    "psych": {
+      "Package": "psych",
+      "Version": "2.6.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "GPArotation",
+        "grDevices",
+        "graphics",
+        "lattice",
+        "methods",
+        "mnormt",
+        "nlme",
+        "parallel",
+        "stats"
+      ],
+      "Hash": "d5868cb64dbcf8c83e13439a7ca1b7bc"
     },
     "purrr": {
       "Package": "purrr",
